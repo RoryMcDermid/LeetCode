@@ -7,6 +7,9 @@ class Solution {
         StringBuilder pB = new StringBuilder(p);
 
         while (!pB.isEmpty()) {
+            if(sB.isEmpty()){
+                break;
+            }
 
             Character first = pB.charAt(0);
             // check the letter to look for in the pattern
@@ -48,13 +51,20 @@ class Solution {
             // single character
             else {
 
-                if (sB.charAt(0) != first) {
+                if (sB.charAt(0) != first && first != '.') {
+                    System.out.println("singlecharacter");
+                    System.out.println(sB);
+                    System.out.println(pB);
                     return false;
                 }
+                sB.deleteCharAt(0);
             }
 
         }
         if (!sB.isEmpty()) {
+            return false;
+        }
+        if (!pB.isEmpty()) {
             return false;
         }
         return true;
