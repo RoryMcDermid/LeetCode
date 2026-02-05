@@ -1,3 +1,8 @@
+//Correct
+//Speed: Beats 100%
+//Memory: Beats 79.87%
+//REMOVE YOUR PRINTS YOU PILLOCK
+
 
 // Definition for singly-linked list.
 class ListNode {
@@ -12,10 +17,13 @@ class Solution {
     public ListNode swapPairs(ListNode head) {
 
         ListNode current = head;
+        ListNode previous = head;
 
         if(current == null){
             return head;
         }
+
+        boolean firstIteration = true;
         
         while(current != null){
             if(current.next == null){
@@ -24,6 +32,8 @@ class Solution {
             //confirmed there are two more nodes in the list
             ListNode first = current;
             ListNode second = current.next;
+            //maybe need a third node after the first iteration? so that the list stays correct.
+            
 
             //add the rest of the list to what is currently the first of the two
             first.next = second.next;
@@ -31,10 +41,15 @@ class Solution {
             second.next = first;
             //set current to what was the second one
             current = second;
-            //current is now equal to whatever was after what we called first
+            if(!firstIteration){
+                previous.next = current;
+            }
 
-            //-------------is breaking, a print here shows that it has the correct values in current and current.next, just isn't saving them right
-
+            if(firstIteration){
+                head = current;
+                firstIteration = false;
+            }
+            previous = current.next;
             current = current.next.next;
         }
 
