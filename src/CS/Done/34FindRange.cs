@@ -1,3 +1,6 @@
+//Correct
+//Speed: beats 100%
+//Memory: beats 75.21%
 public class Solution {
     public int[] SearchRange(int[] nums, int target) {
 
@@ -48,10 +51,9 @@ public class Solution {
                 break;
             }
         }
-        Console.WriteLine("Test");
-        while(returnValues[0] + 1 <= nums.Length - 1)
+        while(returnValues[1] + 1 <= nums.Length - 1)
         {
-            Console.WriteLine("Test");
+
             if (nums[returnValues[1] + 1] == target)
             {
                 returnValues[1]++;
